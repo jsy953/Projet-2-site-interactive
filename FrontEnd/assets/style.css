@@ -294,6 +294,11 @@ button[type="button"] {
 	cursor: pointer;
 }
 
+#errorMessage {
+	margin: 10px;
+	color: #f02a2af8;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
