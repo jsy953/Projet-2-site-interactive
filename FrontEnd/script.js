@@ -126,12 +126,18 @@ function showConnectPage() {
     editButton.innerHTML = ('<img src="./assets/icons/modifier_noir.png">modifier')
     editButton.id = ('editButton')
     portfolio.appendChild(editButton)
+    editButton.addEventListener("click", function () {
+        openModal();
+    })
 
     const body = document.querySelector('body')
     const editTopLine = document.createElement('button')
     editTopLine.innerHTML = ('<img src="./assets/icons/modifier_blanc.png">Mode edition')
     editTopLine.id = ('editTopLine')
     body.prepend(editTopLine)
+    editTopLine.addEventListener("click", function () {
+        openModal();
+    })
 
 }
 
@@ -168,4 +174,166 @@ openConnectPage()
 
 // Appeler la fonction pour afficher le contenu du localStorage
 displayLocalStorage(); */
+
+
+
+////////////////// PARTI MODAL //////////////////
+
+
+
+function openModal() {
+
+    document.querySelector('.overlay').style.display = 'block';
+    document.querySelector('.modal').classList.add('modal-open')
+
+    const modal = document.querySelector('.modals');
+    modal.classList.remove('hidden')
+    const pastModal = document.querySelector('.modal')
+    pastModal.classList.remove('hidden')
+}
+
+function closeModal() {
+    document.querySelector('.overlay').style.display = 'none';
+    document.querySelector('.modal').classList.remove('modal-open')
+}
+
+
+
+////////////////// ramener et pouvoir supprimer les images
+
+
+function modalAutorization() {
+    const token = retrieveToken();
+    if (token !== null && token !== undefined) {
+        modalData();
+    }
+}
+
+function modalData() {
+
+    fetch(urlObjet)
+        .then(reponse => reponse.json())
+        .then(data => {
+            modalContent(data)
+            modalButton(data)
+        })
+
+}
+
+
+
+function modalContent(donnes) {
+
+    const selectModal = document.querySelector('.modal-body')
+
+    for (let i = 0; i < donnes.length; i++) {
+        const figure = document.createElement('figure')
+        selectModal.appendChild(figure)
+
+        const image = document.createElement('img')
+        image.src = (`${donnes[i].imageUrl}`);
+        image.alt = (`${donnes[i].title}`);
+
+        figure.appendChild(image)
+    }
+
+}
+
+function modalButton(donnes) {
+
+    const selectModal = document.querySelector('.modal-body')
+    const selectFigure = selectModal.querySelectorAll('figure')
+
+    for (let i = 0; i < selectFigure.length; i++) {
+        const button = document.createElement('button')
+        button.innerHTML = ("<img src='./assets/icons/poubelle_blanche.png'>");
+        selectFigure[i].appendChild(button)
+        button.addEventListener("click", function () {
+            deleteImage(donnes[i].id);
+        });
+    }
+}
+
+function deleteImage(imageId) {
+
+    const url = `http://localhost:5678/api/works/${imageId}`;
+    const token = retrieveToken();
+
+    fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur lors de la suppression de l'image : ${response.statusText}`);
+            }
+            console.log(`L'image avec l'ID ${imageId} a été supprimée avec succès.`);
+        })
+        .catch(error => console.error('Erreur :', error));
+}
+
+modalAutorization()
+modalButton()
+
+
+
+
+////////////////// fermer la modale en apuyant a coter
+
+
+
+const modal = document.querySelector('.modals');
+
+const overlay = document.querySelector('.overlay')
+
+overlay.addEventListener('click', function (event) {
+
+    if (event.target === overlay) {
+        modal.classList.add('hidden')
+    }
+});
+
+
+
+////////////////// deuxieme page de la modal
+
+
+
+function ajouterImage() {
+
+    const parent = document.querySelector('.modals')
+
+    const pastModal = document.querySelector('.modal')
+    pastModal.classList.add('hidden')
+    const newModal = document.createElement('div')
+    newModal.className = ('modal modal-open');
+    parent.appendChild(newModal)
+
+}
+
+function openModalAjout() {
+
+    document.querySelector('.overlay').style.display = 'block';
+    document.querySelector('.modal2').classList.add('modal-open')
+
+
+    const modal = document.querySelector('.modals');
+    modal.classList.remove('hidden')
+    const firstModal = document.querySelector('.modal')
+    firstModal.classList.remove('hidden')
+    const secondModal = document.querySelector('.modal2')
+    secondModal.classList.remove('hidden')
+
+
+}
+
+function returnModal() {
+    const pastModal = document.querySelector('.modal2')
+    console.log(pastModal)
+    pastModal.classList.remove('modal-open')
+}
 

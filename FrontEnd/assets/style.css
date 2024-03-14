@@ -109,6 +109,7 @@ section {
 
 body {
 	line-height: 1;
+	background-color: rgba(255, 254, 248, 1);
 }
 
 ol,
@@ -152,6 +153,19 @@ header {
 
 main {
 	padding: 0 240px;
+	min-height: 100vh;
+}
+
+footer {
+	display: flex;
+	background-color: white;
+	justify-content: end;
+	height: 50px;
+}
+
+#footer-login {
+	margin-top: 200px;
+
 }
 
 section {
@@ -270,7 +284,8 @@ li a:hover {
 }
 
 #contact input,
-button {
+button,
+.modal-body2 input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -287,7 +302,9 @@ button {
 }
 
 input[type="submit"],
-button[type="button"] {
+button[type="button"],
+.modal-footer button,
+.ajouter-photo button {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -331,7 +348,7 @@ a {
 	height: 38px;
 	border: 1px solid #1D6154;
 	border-radius: 25px;
-	background-color: white;
+	background-color: rgba(255, 254, 248, 1);
 	color: #1D6154;
 	margin: 0 10px;
 	font-family: 'syne';
@@ -344,6 +361,10 @@ a {
 	cursor: pointer;
 	color: white;
 	background-color: #1D6154;
+}
+
+li #logout {
+	padding: 0;
 }
 
 .hidden {
@@ -372,7 +393,7 @@ a {
 }
 
 #editButton {
-	background-color: white;
+	background-color: rgba(255, 254, 248, 1);
 	box-shadow: none;
 	margin: 0 0 22px 10px;
 	font-size: 15px;
@@ -380,4 +401,176 @@ a {
 
 #editButton img {
 	margin-right: 3px;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 630px;
+	height: 688px;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 20px;
+	display: none;
+}
+
+.modal2 {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 630px;
+	height: 688px;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 20px;
+	display: none;
+}
+
+.modal-open {
+	display: block;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: center;
+}
+
+.modal-header h2 {
+	margin-top: 40px;
+}
+
+.modal-body {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 35px 70px;
+	justify-content: center;
+}
+
+.modal-body figure {
+	position: relative;
+}
+
+.modal-body button {
+	position: absolute;
+	top: 20%;
+	right: 15%;
+	width: 17px;
+	height: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	padding: 0 4px;
+	border-radius: 2px;
+}
+
+.modal-body figure button img {
+	width: 10px;
+	height: 10px;
+	margin: 0;
+}
+
+.modal-body button:hover {
+	cursor: pointer;
+}
+
+.modal figure img {
+	width: 75px;
+	margin: 15px 5px;
+}
+
+.modal-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+}
+
+.modal-close img {
+	width: 15px;
+	height: 15px;
+}
+
+.modal-return {
+	padding: 5px 0 0 5px;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+}
+
+.modal-return img {
+	width: 15px;
+	height: 15px;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: center;
+	margin: 40px;
+	padding: 0 40px;
+	border-top: 1px solid rgba(0, 0, 0, 0.39);
+}
+
+#ajouter-photo {
+	background-color: gray;
+}
+
+.modal-body2 {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-body2 label {
+	margin: 10px 105px;
+}
+
+.modal-body2 input {
+	margin: 0 105px;
+}
+
+.ajouter-photo {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 20px 105px;
+	background-color: rgba(232, 241, 246, 1);
+	padding: 15px;
+	border-radius: 3px;
+}
+
+.ajouter-photo img {
+	width: 76px;
+	height: 76px;
+	margin: 5px 0;
+}
+
+.ajouter-photo button {
+	color: rgba(48, 102, 133, 1);
+	background-color: rgba(203, 214, 220, 1);
+	width: 173px;
+	height: 36px;
+}
+
+.ajouter-photo button,
+.ajouter-photo p {
+	margin: 5px 0;
+}
+
+.modals h2 {
+	font-family: inherit;
+	color: #000;
+	font-weight: normal;
 }

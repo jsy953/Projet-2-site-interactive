@@ -21,8 +21,11 @@
 			<ul>
 				<li><a href="">projets</a></li>
 				<li><a href="">contact</a></li>
-				<li><a id="login" href="login.html">login</a></li>
-				<li><a id="logout" class="hidden" onclick="closeConnectPage()">logout</a></li>
+				<div class="bouttonLog">
+					<li><a id="login" href="login.html">login</a></li>
+					<li><a id="logout" class="hidden" onclick="closeConnectPage()">logout</a></li>
+				</div>
+
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -72,6 +75,54 @@
 			</ul>
 		</nav>
 	</footer>
+	<div class="modals">
+		<div class="overlay"></div>
+		<div class="modal">
+			<div class="modal-close" onclick="closeModal()"><img src="./assets/icons/icone_fermer.png" alt="close">
+			</div>
+			<div class="modal-header">
+				<h2>Galerie Photo</h2>
+			</div>
+			<div class="modal-body">
+			</div>
+			<div class="modal-footer">
+				<button onclick="openModalAjout()">Ajouter une photo</button>
+			</div>
+
+			<div class="modal2">
+				<div class="modal-close" onclick="closeModal()"><img src="./assets/icons/icone_fermer.png" alt="close"
+						id="close">
+				</div>
+				<div class="modal-return" onclick="returnModal()">
+					<img src="./assets/icons/icone_retour.png" alt="retour" id="retour">
+				</div>
+				<div class="modal-header">
+					<h2>Ajout Photo</h2>
+				</div>
+
+				<div class="modal-body2">
+					<div class="ajouter-photo">
+						<img src="assets/icons/paysage.png" alt="paysage">
+						<button>+ Ajouter Photo</button>
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title" required>
+
+					<label for="suggestions">categorie</label>
+					<input list="suggestions" id="suggestionsInput" name="suggestions" autocomplete="off">
+					<datalist id="suggestions">
+						<option value="Objets">
+						<option value="Appartements">
+						<option value="Hotels & restaurants">
+					</datalist>
+				</div>
+				<div class="modal-footer">
+					<button onclick="" id="ajouter-photo">Valider</button>
+				</div>
+
+			</div>
+		</div>
 </body>
 
 </html>
