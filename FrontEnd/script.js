@@ -121,22 +121,37 @@ function showConnectPage() {
     const category = document.querySelector('.categories')
     category.classList.add('hidden')
 
-    const portfolio = document.querySelector('.editButton')
+    const portfolio = document.querySelector('.modif')
     const editButton = document.createElement('button')
-    editButton.innerText = ('modifier')
+    editButton.innerHTML = ('<img src="./assets/icons/modifier_noir.png">modifier')
+    editButton.id = ('editButton')
     portfolio.appendChild(editButton)
 
     const body = document.querySelector('body')
     const editTopLine = document.createElement('button')
-    editTopLine.innerText = ('Mode edition')
+    editTopLine.innerHTML = ('<img src="./assets/icons/modifier_blanc.png">Mode edition')
+    editTopLine.id = ('editTopLine')
     body.prepend(editTopLine)
+
 }
 
 function closeConnectPage() {
 
     localStorage.removeItem('token');
-    window.location.href = 'index.html';
-    alert('Vous allez être deconnecter.')
+
+    const logout = document.querySelector('#logout')
+    logout.classList.add('hidden')
+    const login = document.querySelector('#login')
+    login.classList.remove('hidden')
+
+    const category = document.querySelector('.categories')
+    category.classList.remove('hidden')
+
+    const editButton = document.querySelector('#editButton')
+    editButton.classList.add('hidden')
+    const editTopLine = document.querySelector('#editTopLine')
+    editTopLine.classList.add('hidden')
+
 }
 
 retrieveToken()
@@ -153,5 +168,4 @@ openConnectPage()
 
 // Appeler la fonction pour afficher le contenu du localStorage
 displayLocalStorage(); */
-
 

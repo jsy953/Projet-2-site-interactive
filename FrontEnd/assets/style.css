@@ -136,7 +136,7 @@ table {
 
 /** end reset css**/
 body {
-	max-width: 1140px;
+	max-width: 1440px;
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
@@ -145,7 +145,13 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+	padding: 0 150px;
+
+}
+
+main {
+	padding: 0 240px;
 }
 
 section {
@@ -209,7 +215,6 @@ li a:hover {
 
 #introduction img {
 	display: block;
-	margin: auto;
 	width: 80%;
 }
 
@@ -318,11 +323,12 @@ a {
 .categories {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 25px;
+	margin-top: 20px;
+	margin-bottom: 40px;
 }
 
 .categories button {
-	height: 37px;
+	height: 38px;
 	border: 1px solid #1D6154;
 	border-radius: 25px;
 	background-color: white;
@@ -331,6 +337,7 @@ a {
 	font-family: 'syne';
 	font-size: 16px;
 	padding: 0 1.5rem;
+	box-shadow: none;
 }
 
 .categories button:hover {
@@ -341,4 +348,36 @@ a {
 
 .hidden {
 	display: none;
+}
+
+#editTopLine {
+	width: 100%;
+	background-color: black;
+	color: white;
+}
+
+#editTopLine img {
+	margin-right: 5px;
+}
+
+#editTopLine:hover,
+#editButton {
+	cursor: pointer;
+}
+
+.modif {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#editButton {
+	background-color: white;
+	box-shadow: none;
+	margin: 0 0 22px 10px;
+	font-size: 15px;
+}
+
+#editButton img {
+	margin-right: 3px;
 }
