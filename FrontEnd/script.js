@@ -59,7 +59,6 @@ function displayAll(donnes) {
 
     const contenuGallery = document.querySelector('.gallery')
     htmlCloner = contenuGallery.cloneNode(true)
-    console.log(htmlCloner)
 
 }
 
@@ -87,17 +86,72 @@ function showImagesByCategory(cateName) {
     stockAll();
 
     const imageFiltrer = Array.from(document.getElementsByClassName(`${cateName}`))
-    console.log(imageFiltrer)
     const galleryContainer = document.querySelector('.gallery')
     galleryContainer.innerHTML = '';
 
     for (let i = 0; i < imageFiltrer.length; i++) {
         const clonedImage = imageFiltrer[i].cloneNode(true);
-        console.log(clonedImage)
         galleryContainer.appendChild(clonedImage);
     };
 };
 
 fetchCategories()
 fetchObjets()
+
+
+function retrieveToken() {
+    return localStorage.getItem('token');
+}
+
+function openConnectPage() {
+    const token = retrieveToken();
+    console.log(token)
+    if (token !== null && token !== undefined) {
+        showConnectPage();
+    }
+}
+
+function showConnectPage() {
+
+    const logout = document.querySelector('#logout')
+    logout.classList.remove('hidden')
+    const login = document.querySelector('#login')
+    login.classList.add('hidden')
+
+    const category = document.querySelector('.categories')
+    category.classList.add('hidden')
+
+    const portfolio = document.querySelector('.editButton')
+    const editButton = document.createElement('button')
+    editButton.innerText = ('modifier')
+    portfolio.appendChild(editButton)
+
+    const body = document.querySelector('body')
+    const editTopLine = document.createElement('button')
+    editTopLine.innerText = ('Mode edition')
+    body.prepend(editTopLine)
+}
+
+function closeConnectPage() {
+
+    localStorage.removeItem('token');
+    window.location.href = 'index.html';
+    alert('Vous allez être deconnecter.')
+}
+
+retrieveToken()
+openConnectPage()
+
+/* function displayLocalStorage() {
+    // Récupérer toutes les clés du localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        console.log(`${key}: ${value}`);
+    }
+}
+
+// Appeler la fonction pour afficher le contenu du localStorage
+displayLocalStorage(); */
+
 

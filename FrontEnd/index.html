@@ -21,7 +21,8 @@
 			<ul>
 				<li><a href="">projets</a></li>
 				<li><a href="">contact</a></li>
-				<li><a href="login.html">login</a></li>
+				<li><a id="login" href="login.html">login</a></li>
+				<li><a id="logout" class="hidden" onclick="closeConnectPage()">logout</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -44,6 +45,7 @@
 		</section>
 		<section id="portfolio">
 			<h2>Mes Projets</h2>
+			<div class="editButton"></div>
 			<div class="categories"></div>
 			<div class="gallery"></div>
 		</section>
@@ -61,7 +63,6 @@
 			</form>
 		</section>
 	</main>
-
 	<footer>
 		<nav>
 			<ul>
