@@ -190,6 +190,9 @@ function openModal() {
     modal.classList.remove('hidden')
     const pastModal = document.querySelector('.modal')
     pastModal.classList.remove('hidden')
+
+    const modal2 = document.querySelector('.modal2')
+    modal2.classList.remove('modal-open')
 }
 
 function closeModal() {
@@ -333,7 +336,67 @@ function openModalAjout() {
 
 function returnModal() {
     const pastModal = document.querySelector('.modal2')
-    console.log(pastModal)
     pastModal.classList.remove('modal-open')
+}
+
+function selectFile() {
+    const fileInput = document.getElementById("fileInput");
+    fileInput.click();
+
+}
+
+function previewFile(event) {
+    const previewImage = document.getElementById('previewImage');
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = function () {
+        previewImage.src = reader.result;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        previewImage.src = ""; // Effacer l'aperçu si aucun fichier sélectionné
+    }
+}
+
+
+async function sendWork() {
+    const url = 'http://localhost:5678/api/works';
+    const token = retrieveToken();
+    console
+
+    const titleSelect = document.getElementById('title').value;
+    const suggestionsInput = document.getElementById('suggestionsInput').value;
+
+    const imageFile = document.querySelector('input[type=file]').files[0];
+    const title = titleSelect;
+    const category = suggestionsInput;
+
+    const formData = new FormData();
+    formData.append('image', imageFile);
+    formData.append('title', title);
+    formData.append('category', category);
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.json();
+            throw new Error(response.statusText);
+        }
+
+        const workData = await response.json();
+        console.log('Work created:', workData);
+    } catch (error) {
+        console.error('Error creating work:', error);
+    }
 }
 

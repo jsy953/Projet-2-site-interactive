@@ -102,23 +102,24 @@
 
 				<div class="modal-body2">
 					<div class="ajouter-photo">
-						<img src="assets/icons/paysage.png" alt="paysage">
-						<button>+ Ajouter Photo</button>
+						<img id="previewImage" src="./assets/icons/paysage.png" alt="Aperçu de l'image">
+						<label for="fileInput">+ Ajouter Photo</label>
+						<input type="file" id="fileInput" class="previewButton" accept="image/*"
+							onchange="previewFile(event)">
 						<p>jpg, png : 4mo max</p>
 					</div>
 					<label for="title">Titre</label>
 					<input type="text" name="title" id="title" required>
-
-					<label for="suggestions">categorie</label>
+					<label for="suggestions">Catégorie</label>
 					<input list="suggestions" id="suggestionsInput" name="suggestions" autocomplete="off">
 					<datalist id="suggestions">
-						<option value="Objets">
-						<option value="Appartements">
-						<option value="Hotels & restaurants">
+						<option label="Objets" value="1">
+						<option label="Appartements" value="2">
+						<option label="Hotels & restaurants" value="3">
 					</datalist>
 				</div>
 				<div class="modal-footer">
-					<button onclick="" id="ajouter-photo">Valider</button>
+					<button onclick="sendWork()" id="ajouter-photo">Valider</button>
 				</div>
 
 			</div>

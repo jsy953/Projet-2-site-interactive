@@ -304,7 +304,7 @@ button,
 input[type="submit"],
 button[type="button"],
 .modal-footer button,
-.ajouter-photo button {
+.ajouter-photo label {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -557,14 +557,17 @@ li #logout {
 	margin: 5px 0;
 }
 
-.ajouter-photo button {
+.ajouter-photo label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	color: rgba(48, 102, 133, 1);
 	background-color: rgba(203, 214, 220, 1);
 	width: 173px;
 	height: 36px;
 }
 
-.ajouter-photo button,
+.ajouter-photo label,
 .ajouter-photo p {
 	margin: 5px 0;
 }
@@ -573,4 +576,12 @@ li #logout {
 	font-family: inherit;
 	color: #000;
 	font-weight: normal;
+}
+
+#fileInput {
+	display: none;
+}
+
+datalist option {
+	display: none;
 }
