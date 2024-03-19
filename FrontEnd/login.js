@@ -23,15 +23,11 @@ function submitForm() {
             return response.json();
         })
         .then(data => {
-            // Succès de la connexion, vous pouvez stocker le token ou faire d'autres actions nécessaires
-            // console.log('Connexion réussie:', data);
             saveToken(data.token);
 
-            // Redirection vers une autre page (vous pouvez remplacer par votre propre URL)
             window.location.href = 'index.html';
         })
         .catch(error => {
-            // Erreur lors de la connexion, afficher un message d'erreur
             console.error('Erreur lors de la connexion:', error.message);
             document.getElementById("errorMessage").innerHTML = error.message;
         });
@@ -44,15 +40,4 @@ function saveToken(token) {
     console.log(token)
 }
 
-/* function displayLocalStorage() {
-    // Récupérer toutes les clés du localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-        console.log(`${key}: ${value}`);
-    }
-}
-
-// Appeler la fonction pour afficher le contenu du localStorage
-displayLocalStorage(); */
 

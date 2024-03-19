@@ -163,18 +163,6 @@ function closeConnectPage() {
 retrieveToken()
 openConnectPage()
 
-/* function displayLocalStorage() {
-    // Récupérer toutes les clés du localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-        console.log(`${key}: ${value}`);
-    }
-}
-
-// Appeler la fonction pour afficher le contenu du localStorage
-displayLocalStorage(); */
-
 
 
 ////////////////// PARTI MODAL //////////////////
@@ -191,7 +179,7 @@ function openModal() {
     const pastModal = document.querySelector('.modal')
     pastModal.classList.remove('hidden')
 
-    const modal2 = document.querySelector('.modal2')
+    const modal2 = document.querySelector('.second-modal')
     modal2.classList.remove('modal-open')
 }
 
@@ -285,7 +273,7 @@ modalButton()
 
 
 
-////////////////// fermer la modale en apuyant a coter
+////////////////// fermer la modale en apuyant sur le coter
 
 
 
@@ -321,21 +309,21 @@ function ajouterImage() {
 function openModalAjout() {
 
     document.querySelector('.overlay').style.display = 'block';
-    document.querySelector('.modal2').classList.add('modal-open')
+    document.querySelector('.second-modal').classList.add('modal-open')
 
 
     const modal = document.querySelector('.modals');
     modal.classList.remove('hidden')
     const firstModal = document.querySelector('.modal')
     firstModal.classList.remove('hidden')
-    const secondModal = document.querySelector('.modal2')
+    const secondModal = document.querySelector('.second-modal')
     secondModal.classList.remove('hidden')
 
 
 }
 
 function returnModal() {
-    const pastModal = document.querySelector('.modal2')
+    const pastModal = document.querySelector('.second-modal')
     pastModal.classList.remove('modal-open')
 }
 
@@ -357,7 +345,7 @@ function previewFile(event) {
     if (file) {
         reader.readAsDataURL(file);
     } else {
-        previewImage.src = ""; // Effacer l'aperçu si aucun fichier sélectionné
+        previewImage.src = "";
     }
 }
 

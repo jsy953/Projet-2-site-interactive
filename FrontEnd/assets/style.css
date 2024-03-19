@@ -285,7 +285,7 @@ li a:hover {
 
 #contact input,
 button,
-.modal-body2 input {
+.second-modal-body input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -426,7 +426,7 @@ li #logout {
 	display: none;
 }
 
-.modal2 {
+.second-modal {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -528,16 +528,16 @@ li #logout {
 	background-color: gray;
 }
 
-.modal-body2 {
+.second-modal-body {
 	display: flex;
 	flex-direction: column;
 }
 
-.modal-body2 label {
+.second-modal-body label {
 	margin: 10px 105px;
 }
 
-.modal-body2 input {
+.second-modal-body input {
 	margin: 0 105px;
 }
 
