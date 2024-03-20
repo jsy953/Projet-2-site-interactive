@@ -37,21 +37,21 @@ function buttonAll(image) {
     })
 }
 
-function displayAll(donnes) {
+function displayAll(data) {
 
     const gallery = document.querySelector('.gallery')
 
-    for (let i = 0; i < donnes.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         const figure = document.createElement('figure')
-        figure.className = (`${donnes[i].category.name}`)
+        figure.className = (`${data[i].category.name}`)
         gallery.appendChild(figure)
 
         const image = document.createElement('img')
-        image.src = (`${donnes[i].imageUrl}`);
-        image.alt = (`${donnes[i].title}`);
+        image.src = (`${data[i].imageUrl}`);
+        image.alt = (`${data[i].title}`);
 
         const figcaption = document.createElement('figcaption')
-        figcaption.innerHTML = (`${donnes[i].title}`);
+        figcaption.innerHTML = (`${data[i].title}`);
 
         figure.appendChild(image)
         figure.appendChild(figcaption)
@@ -213,24 +213,24 @@ function modalData() {
 
 
 
-function modalContent(donnes) {
+function modalContent(data) {
 
     const selectModal = document.querySelector('.modal-body')
 
-    for (let i = 0; i < donnes.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         const figure = document.createElement('figure')
         selectModal.appendChild(figure)
 
         const image = document.createElement('img')
-        image.src = (`${donnes[i].imageUrl}`);
-        image.alt = (`${donnes[i].title}`);
+        image.src = (`${data[i].imageUrl}`);
+        image.alt = (`${data[i].title}`);
 
         figure.appendChild(image)
     }
 
 }
 
-function modalButton(donnes) {
+function modalButton(data) {
 
     const selectModal = document.querySelector('.modal-body')
     const selectFigure = selectModal.querySelectorAll('figure')
@@ -240,7 +240,7 @@ function modalButton(donnes) {
         button.innerHTML = ("<img src='./assets/icons/poubelle_blanche.png'>");
         selectFigure[i].appendChild(button)
         button.addEventListener("click", function () {
-            deleteImage(donnes[i].id);
+            deleteImage(data[i].id);
         });
     }
 }
