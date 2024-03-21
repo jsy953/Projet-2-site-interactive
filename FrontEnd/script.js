@@ -268,7 +268,6 @@ function deleteImage(imageId) {
 }
 
 modalAutorization()
-modalButton()
 
 
 
