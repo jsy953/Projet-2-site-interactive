@@ -321,6 +321,12 @@ button[type="button"],
 	color: #f02a2af8;
 }
 
+#seconderrorMessage {
+	margin-left: 115px;
+	margin-top: 10px;
+	color: #f02a2af8;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;

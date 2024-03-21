@@ -378,13 +378,14 @@ async function sendWork() {
 
         if (!response.ok) {
             const errorMessage = await response.json();
-            throw new Error(response.statusText);
+            throw new Error('erreur dans le remplissage du formulaire');
         }
 
         const workData = await response.json();
         console.log('Work created:', workData);
     } catch (error) {
         console.error('Error creating work:', error);
+        document.getElementById('seconderrorMessage').innerHTML = error.message;
     }
 }
 
