@@ -15,6 +15,7 @@ function fetchCategories() {
         .then(reponse => reponse.json())
         .then(data => {
             displayCategories(data)
+            createFormInput(data)
         });
 };
 
@@ -141,6 +142,13 @@ function showConnectPage() {
 
 }
 
+function buttoncloseConnectPage() {
+    const button = document.querySelector('#logout')
+    button.addEventListener("click", function () {
+        closeConnectPage();
+    })
+}
+
 function closeConnectPage() {
 
     localStorage.removeItem('token');
@@ -152,14 +160,22 @@ function closeConnectPage() {
 
     const category = document.querySelector('.categories')
     category.classList.remove('hidden')
+    category.innerHTML = '';
 
     const editButton = document.querySelector('#editButton')
     editButton.classList.add('hidden')
     const editTopLine = document.querySelector('#editTopLine')
     editTopLine.classList.add('hidden')
 
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = '';
+
+    fetchCategories();
+    fetchObjets()
+
 }
 
+buttoncloseConnectPage()
 retrieveToken()
 openConnectPage()
 
@@ -183,11 +199,34 @@ function openModal() {
     modal2.classList.remove('modal-open')
 }
 
+
+function buttoncloseModal() {
+    const button = document.querySelector('.modal-close')
+    button.addEventListener("click", function () {
+        closeModal();
+    })
+}
+
 function closeModal() {
     document.querySelector('.overlay').style.display = 'none';
     document.querySelector('.modal').classList.remove('modal-open')
 }
 
+buttoncloseModal()
+
+function buttonsecondcloseModal() {
+    const button = document.querySelector('#close')
+    button.addEventListener("click", function () {
+        secondcloseModal();
+    })
+}
+
+function secondcloseModal() {
+    document.querySelector('.overlay').style.display = 'none';
+    document.querySelector('.modal').classList.remove('modal-open')
+}
+
+buttonsecondcloseModal()
 
 
 ////////////////// ramener et pouvoir supprimer les images
@@ -245,6 +284,14 @@ function modalButton(data) {
     }
 }
 
+function updateImage() {
+    const modal = document.querySelector('.modal-body')
+    const gallery = document.querySelector('.gallery')
+
+    modal.innerHTML = '';
+    gallery.innerHTML = '';
+}
+
 function deleteImage(imageId) {
 
     const url = `http://localhost:5678/api/works/${imageId}`;
@@ -262,7 +309,9 @@ function deleteImage(imageId) {
             if (!response.ok) {
                 throw new Error(`Erreur lors de la suppression de l'image : ${response.statusText}`);
             }
-            console.log(`L'image avec l'ID ${imageId} a été supprimée avec succès.`);
+            fetchObjets()
+            updateImage();
+            modalData();
         })
         .catch(error => console.error('Erreur :', error));
 }
@@ -305,6 +354,13 @@ function ajouterImage() {
 
 }
 
+function buttonopenModalAjout() {
+    const button = document.querySelector('#openModalAjout')
+    button.addEventListener("click", function () {
+        openModalAjout();
+    })
+}
+
 function openModalAjout() {
 
     document.querySelector('.overlay').style.display = 'block';
@@ -320,17 +376,34 @@ function openModalAjout() {
 
 
 }
+buttonopenModalAjout()
+
+function buttonreturnModal() {
+    const button = document.querySelector('.modal-return')
+    button.addEventListener("click", function () {
+        returnModal();
+    })
+}
 
 function returnModal() {
     const pastModal = document.querySelector('.second-modal')
     pastModal.classList.remove('modal-open')
 }
+buttonreturnModal()
 
 function selectFile() {
     const fileInput = document.getElementById("fileInput");
     fileInput.click();
 
 }
+
+function inputpreviewFile() {
+    const button = document.querySelector('#fileInput')
+    button.addEventListener("change", function () {
+        previewFile(event);
+    })
+}
+
 
 function previewFile(event) {
     const previewImage = document.getElementById('previewImage');
@@ -348,23 +421,89 @@ function previewFile(event) {
     }
 }
 
+inputpreviewFile()
+
+function createFormInput(project) {
+    const choice = document.querySelector('#suggestions')
+    console.log(choice)
+    choice.innerHTML = '';
+    for (let i = 0; i < project.length; i++) {
+        const categoryButton = document.createElement('option')
+        categoryButton.innerText = `${project[i].name}`;
+        /* categoryButton.value = ''; */
+        categoryButton.dataset.value = project[i].id;
+        choice.appendChild(categoryButton)
+    };
+
+}
+
+
+function allInputFull() {
+    const firstInput = document.getElementById('fileInput').value.trim();
+    const secondInput = document.getElementById('title').value.trim();
+    const thidInput = document.getElementById('suggestionsInput').value.trim();
+
+    return firstInput !== '' && secondInput !== '' && thidInput !== '';
+}
+
+function changeButtonColor() {
+
+    const buttonAdd = document.getElementById('ajouter-photo-button')
+
+    if (allInputFull()) {
+        const buttonAdd = document.querySelector('.formFull');
+        buttonAdd.removeAttribute('id');
+    } else {
+        const buttonAdd = document.querySelector('.formFull');
+        buttonAdd.id = 'ajouter-photo-button';
+    }
+
+}
+
+document.getElementById('fileInput').addEventListener('input', changeButtonColor);
+document.getElementById('title').addEventListener('input', changeButtonColor);
+document.getElementById('suggestionsInput').addEventListener('input', changeButtonColor);
+
+
+changeButtonColor();
+
+
+function buttonsendWork() {
+    const button = document.querySelector('.formFull')
+    button.addEventListener("click", function () {
+        sendWork();
+    })
+}
+
 
 async function sendWork() {
     const url = 'http://localhost:5678/api/works';
     const token = retrieveToken();
-    console
 
     const titleSelect = document.getElementById('title').value;
+
     const suggestionsInput = document.getElementById('suggestionsInput').value;
+    const datalist = document.getElementById('suggestions');
+    const selectedOption = Array.from(datalist.options).find(option => option.text === suggestionsInput);
+
+
+    const dataValue = selectedOption.dataset.value;
+
 
     const imageFile = document.querySelector('input[type=file]').files[0];
     const title = titleSelect;
-    const category = suggestionsInput;
+    const category = dataValue;
 
     const formData = new FormData();
     formData.append('image', imageFile);
     formData.append('title', title);
     formData.append('category', category);
+
+    /* if (imageFile !== null && title !== null && category !== null) {
+        const buttonAdd = document.querySelector('#ajouter-photo-button')
+        buttonAdd.removeAttribute('id');
+        console.log('sa marche ')
+    } */
 
     try {
         const response = await fetch(url, {
@@ -379,7 +518,9 @@ async function sendWork() {
             const errorMessage = await response.json();
             throw new Error('erreur dans le remplissage du formulaire');
         }
-
+        modalData()
+        fetchObjets();
+        updateImage();
         const workData = await response.json();
         console.log('Work created:', workData);
     } catch (error) {
@@ -388,3 +529,4 @@ async function sendWork() {
     }
 }
 
+buttonsendWork()

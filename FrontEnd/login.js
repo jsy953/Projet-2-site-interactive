@@ -1,5 +1,11 @@
 const url = 'http://localhost:5678/api/users/login';
 
+function buttonSubmitForm() {
+    const button = document.querySelector('#submitForm')
+    button.addEventListener("click", function () {
+        submitForm();
+    })
+}
 function submitForm() {
 
     const email = document.getElementById('email').value;
@@ -40,4 +46,4 @@ function saveToken(token) {
     console.log(token)
 }
 
-
+buttonSubmitForm()

@@ -303,7 +303,7 @@ button,
 
 input[type="submit"],
 button[type="button"],
-.modal-footer button,
+#openModalAjout,
 .ajouter-photo label {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -498,6 +498,10 @@ li #logout {
 	margin: 15px 5px;
 }
 
+.ajouter-photo-button {
+	background-color: gray;
+}
+
 .modal-close {
 	position: absolute;
 	top: 8px;
@@ -530,9 +534,7 @@ li #logout {
 	border-top: 1px solid rgba(0, 0, 0, 0.39);
 }
 
-#ajouter-photo {
-	background-color: gray;
-}
+
 
 .second-modal-body {
 	display: flex;
@@ -590,4 +592,28 @@ li #logout {
 
 datalist option {
 	display: none;
+}
+
+.formFull {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 2em auto;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+#ajouter-photo-button {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: gray;
+	margin: 2em auto;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+	cursor: pointer;
 }

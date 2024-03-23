@@ -23,7 +23,7 @@
 				<li><a href="">contact</a></li>
 				<div class="bouttonLog">
 					<li><a id="login" href="login.html">login</a></li>
-					<li><a id="logout" class="hidden" onclick="closeConnectPage()">logout</a></li>
+					<li><a id="logout" class="hidden">logout</a></li>
 				</div>
 
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -78,7 +78,7 @@
 	<div class="modals">
 		<div class="overlay"></div>
 		<div class="modal">
-			<div class="modal-close" onclick="closeModal()"><img src="./assets/icons/icone_fermer.png" alt="close">
+			<div class="modal-close"><img src="./assets/icons/icone_fermer.png" alt="close">
 			</div>
 			<div class="modal-header">
 				<h2>Galerie Photo</h2>
@@ -86,14 +86,13 @@
 			<div class="modal-body">
 			</div>
 			<div class="modal-footer">
-				<button onclick="openModalAjout()">Ajouter une photo</button>
+				<button id="openModalAjout">Ajouter une photo</button>
 			</div>
 
 			<div class="second-modal">
-				<div class="modal-close" onclick="closeModal()"><img src="./assets/icons/icone_fermer.png" alt="close"
-						id="close">
+				<div class="modal-close"><img src="./assets/icons/icone_fermer.png" alt="close" id="close">
 				</div>
-				<div class="modal-return" onclick="returnModal()">
+				<div class="modal-return">
 					<img src="./assets/icons/icone_retour.png" alt="retour" id="retour">
 				</div>
 				<div class="modal-header">
@@ -104,8 +103,7 @@
 					<div class="ajouter-photo">
 						<img id="previewImage" src="./assets/icons/paysage.png" alt="Aperçu de l'image">
 						<label for="fileInput">+ Ajouter Photo</label>
-						<input type="file" id="fileInput" class="previewButton" accept="image/*"
-							onchange="previewFile(event)">
+						<input type="file" id="fileInput" class="previewButton" accept="image/*">
 						<p>jpg, png : 4mo max</p>
 					</div>
 					<label for="title">Titre</label>
@@ -113,14 +111,11 @@
 					<label for="suggestions">Catégorie</label>
 					<input list="suggestions" id="suggestionsInput" name="suggestions" autocomplete="off">
 					<datalist id="suggestions">
-						<option label="Objets" value="1">
-						<option label="Appartements" value="2">
-						<option label="Hotels & restaurants" value="3">
 					</datalist>
 					<div id="seconderrorMessage"></div>
 				</div>
 				<div class="modal-footer">
-					<button onclick="sendWork()" id="ajouter-photo">Valider</button>
+					<button class="formFull" id="ajouter-photo-button">Valider</button>
 				</div>
 
 			</div>
