@@ -25,6 +25,7 @@ cd backend
 npm install     # installe les dépendances
 npm start       # lance le serveur API
 
-cd ../frontend
-npm install     # installe serve (si pas déjà présent)
-npm start       # lance un serveur local
+CODE POUR LA CONNEXION
+
+Email : sophie.bluel@test.tld
+Mot de passe : S0phie
