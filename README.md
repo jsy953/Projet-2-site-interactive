@@ -1,8 +1,30 @@
-# Portfolio-architecte-sophie-bluel
+# Projet 2 – Portfolio architecte (Site interactif)
 
-Code du projet 6 d'intégrateur web.
+Ce projet est issu du parcours **intégrateur web**.  
+Il consiste à développer le portfolio de **Sophie Bluel**, architecte d’intérieur, avec une interface dynamique reliée à un backend Node.js/Express.
 
-## Information pour le lancer le code
+---
 
- - Lancer le backend depuis votre terminal en suivant les instruction du fichier ReadMe.
- - Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème
+## 🔗 Démo en ligne
+
+👉 [Voir la démo (frontend uniquement)](https://jsy953.github.io/Projet-2-site-interactive/)
+
+⚠️ Attention : la version en ligne contient seulement le **frontend statique** (HTML/CSS/JS).  
+Les fonctionnalités de **connexion** et de **gestion des projets** nécessitent le backend et ne fonctionnent qu’en local ou si l’API est déployée séparément.
+
+---
+
+## ⚙️ Installation locale (frontend + backend)
+
+### 1. Cloner le projet
+```bash
+git clone https://github.com/jsy953/Projet-2-site-interactive.git
+cd Projet-2-site-interactive
+
+cd backend
+npm install     # installe les dépendances
+npm start       # lance le serveur API
+
+cd ../frontend
+npm install     # installe serve (si pas déjà présent)
+npm start       # lance un serveur local
